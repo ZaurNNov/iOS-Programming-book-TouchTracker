@@ -11,6 +11,9 @@
 		CEB34D162090A5F100BDE0D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB34D152090A5F100BDE0D3 /* Assets.xcassets */; };
 		CEB34D192090A5F100BDE0D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB34D172090A5F100BDE0D3 /* LaunchScreen.storyboard */; };
 		CEB34D1C2090A5F100BDE0D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB34D1B2090A5F100BDE0D3 /* main.m */; };
+		CEB34D242090A61900BDE0D3 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB34D232090A61900BDE0D3 /* Line.m */; };
+		CEB34D272090A6FE00BDE0D3 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB34D262090A6FE00BDE0D3 /* DrawView.m */; };
+		CEB34D2A2090A73D00BDE0D3 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB34D292090A73D00BDE0D3 /* DrawViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,12 @@
 		CEB34D182090A5F100BDE0D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB34D1A2090A5F100BDE0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB34D1B2090A5F100BDE0D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEB34D222090A61900BDE0D3 /* Line.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		CEB34D232090A61900BDE0D3 /* Line.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		CEB34D252090A6FE00BDE0D3 /* DrawView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		CEB34D262090A6FE00BDE0D3 /* DrawView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		CEB34D282090A73D00BDE0D3 /* DrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
+		CEB34D292090A73D00BDE0D3 /* DrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +68,12 @@
 				CEB34D172090A5F100BDE0D3 /* LaunchScreen.storyboard */,
 				CEB34D1A2090A5F100BDE0D3 /* Info.plist */,
 				CEB34D1B2090A5F100BDE0D3 /* main.m */,
+				CEB34D222090A61900BDE0D3 /* Line.h */,
+				CEB34D232090A61900BDE0D3 /* Line.m */,
+				CEB34D252090A6FE00BDE0D3 /* DrawView.h */,
+				CEB34D262090A6FE00BDE0D3 /* DrawView.m */,
+				CEB34D282090A73D00BDE0D3 /* DrawViewController.h */,
+				CEB34D292090A73D00BDE0D3 /* DrawViewController.m */,
 			);
 			path = TouchTracker;
 			sourceTree = "<group>";
@@ -133,6 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB34D1C2090A5F100BDE0D3 /* main.m in Sources */,
+				CEB34D2A2090A73D00BDE0D3 /* DrawViewController.m in Sources */,
+				CEB34D242090A61900BDE0D3 /* Line.m in Sources */,
+				CEB34D272090A6FE00BDE0D3 /* DrawView.m in Sources */,
 				CEB34D142090A5EF00BDE0D3 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
