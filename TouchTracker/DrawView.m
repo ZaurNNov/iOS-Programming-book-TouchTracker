@@ -9,11 +9,11 @@
 #import "DrawView.h"
 #import "Line.h"
 
-@interface DrawView()
-//@property (nonatomic, strong) Line *currentLine;
+@interface DrawView() <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableDictionary *linesInProgress;
 @property (nonatomic, strong) NSMutableArray *finishedLines;
 @property (nonatomic, weak) Line *selectedLine;
+@property (nonatomic, strong) UIPanGestureRecognizer *moveRecognizer;
 
 @end
 
@@ -41,6 +41,11 @@
         
         UILongPressGestureRecognizer *pressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
         [self addGestureRecognizer:pressGesture];
+        
+        self.moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveLine:)];
+        self.moveRecognizer.delegate = self;
+        self.moveRecognizer.cancelsTouchesInView = NO;
+        [self addGestureRecognizer:self.moveRecognizer];
     }
     return self;
 }
@@ -49,7 +54,7 @@
     return YES;
 }
 
-#pragma mark - UITapGestureRecognizer
+#pragma mark - UIGestureRecognizer
 -(void)doubleTap: (UIGestureRecognizer *)tap {
     NSLog(@"UITapGestureRecognizer - Tap");
     
@@ -91,6 +96,36 @@
         self.selectedLine = nil;
     }
     [self setNeedsDisplay];
+}
+
+-(void)moveLine: (UIPanGestureRecognizer *)pan {
+    if (!self.selectedLine)
+        return;
+    
+    if (pan.state == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [pan translationInView:self];
+        
+        CGPoint begin = self.selectedLine.begin;
+        CGPoint end = self.selectedLine.end;
+        begin.x += translation.x;
+        begin.y += translation.y;
+        end.x += translation.x;
+        end.y += translation.y;
+        
+        self.selectedLine.begin = begin;
+        self.selectedLine.end = end;
+        
+        [self setNeedsDisplay];
+        [pan setTranslation:CGPointZero inView:self];
+    }
+}
+
+#pragma mark - UIGesture delegate
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer {
+    if (gestureRecognizer == self.moveRecognizer)
+        return YES;
+    
+    return NO;
 }
 
 #pragma mark - Draw
