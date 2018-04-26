@@ -42,6 +42,10 @@
     return self;
 }
 
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
 #pragma mark - UITapGestureRecognizer
 -(void)doubleTap: (UIGestureRecognizer *)tap {
     NSLog(@"UITapGestureRecognizer - Tap");
@@ -55,6 +59,20 @@
     NSLog(@"Recognizer tap");
     CGPoint point = [tap locationInView:self];
     self.selectedLine = [self lineAtPoint:point];
+    
+    if (self.selectedLine) {
+        [self becomeFirstResponder];
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deleteLine:)];
+        menu.menuItems = @[deleteItem];
+        
+        // tell the menu where it should come from and show it
+        [menu setTargetRect:CGRectMake(point.x, point.y, 2, 2) inView:self];
+        [menu setMenuVisible:YES animated:YES];
+    } else {
+        // Hide menu
+        [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+    }
     
     [self setNeedsDisplay];
 }
@@ -103,6 +121,12 @@
         }
     }
     return nil;
+}
+
+-(void)deleteLine: (id)sender {
+    // remove selected line
+    [self.finishedLines removeObject:self.selectedLine];
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Touch
